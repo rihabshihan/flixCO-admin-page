@@ -1,0 +1,29 @@
+{% extends 'base.html' %}  <!-- This extends the base template to include the navbar and other common elements -->
+
+{% block title %}View Movie{% endblock %}  <!-- Customize the title for this page -->
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <!-- Movie Title -->
+                <h2 class="card-title text-center mb-4">Movie Title</h2>
+
+                <!-- Movie Thumbnail -->
+                <div class="text-center mb-4">
+                    <img src="thumbnail.jpg" alt="Movie Thumbnail" class="movie-thumbnail img-fluid rounded" style="max-height: 400px;">
+                </div>
+
+                <!-- Movie Description -->
+                <p class="movie-description text-muted">
+                    This is a brief description of the movie. It covers the main plot points, characters, and anything else relevant to the viewer.
+                </p>
+
+                <!-- Embedded Video (Responsive) -->
+                <div class="ratio ratio-16x9 mt-4">
+                    <iframe src="https://www.youtube.com/embed/videoID" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

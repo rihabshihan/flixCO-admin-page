@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Movie - OTT Platform{% endblock %}
+
+{% block styles %}
+<style>
+    .card {
+        margin-top: 50px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card-header {
+        background-color: #28a745; /* Success color */
+        color: white;
+        text-align: center;
+        font-size: 2rem; /* Larger font size for heading */
+        font-weight: bold;
+    }
+    .form-label {
+        font-weight: bold;
+    }
+    .btn-create {
+        width: 100%;
+        background-color: #28a745; /* Success color */
+        color: white;
+        font-weight: bold;
+    }
+    .btn-create:hover {
+        background-color: #218838; /* Darker success color on hover */
+    }
+    .container {
+        max-width: 600px; /* Limit the width of the container */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h4 style="text-align: center;">Create Movie</h4>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" placeholder="Enter movie title" required>
+                </div>
+                <div class="mb-3">
+                    <label for="thumbnail" class="form-label">Thumbnail</label>
+                    <input type="file" class="form-control" id="thumbnail" accept="image/*" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" id="description" rows="4" placeholder="Enter movie description" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="video" class="form-label">Upload Video</label>
+                    <input type="file" class="form-control" id="video" accept="video/*" required>
+                </div>
+                <div class="d-flex justify-content-end"> 
+                    <a href="#" class="btn btn-success btn-create">Create</a> 
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

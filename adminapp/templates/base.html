@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Home Page - Movies{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom Navbar Styles */
+        .navbar-custom {
+            background-color: #b31919; /* Custom primary color (Bootstrap's primary is #007bff) */
+        }
+        .navbar-custom .navbar-nav .nav-link,
+        .navbar-custom .navbar-brand,
+        .navbar-custom .dropdown-toggle {
+            color: white !important; /* Making the text white */
+        }
+        .navbar-custom .navbar-nav .nav-link:hover,
+        .navbar-custom .navbar-brand:hover,
+        .navbar-custom .dropdown-toggle:hover {
+            color: #ddd !important; /* Optional: Light grey hover effect */
+        }
+        .navbar-brand {
+            padding-left: 20px; /* Add padding to the left of 'Admin Page' */
+            font-size: 24px;
+        }
+        .search-bar {
+            border-radius: 20px;
+        }
+        .pagination {
+            justify-content: center;
+        }
+        .btn-create {
+            float: right;
+        }
+        .content-wrapper {
+            width: 80%; /* Adjusted width for better responsiveness */
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom"> <!-- Added custom navbar class -->
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><b><i>Admin Page</i></b></a> <!-- Padding added -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'homepage' %}active{% endif %}" href="{% url 'homepage' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'userhome' %}active{% endif %}" href="{% url 'userhome' %}">User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'subs' %}active{% endif %}" href="{% url 'subs' %}">Subscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'reports' %}active{% endif %}" href="{% url 'reports' %}">Reports</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'settings' %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Settings
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'changepass' %}">Change Password</a></li>
+                            <li><a class="dropdown-item" href="{% url 'login' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="content-wrapper">
+            {% block content %}
+            <!-- Page specific content will go here -->
+            {% endblock %}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

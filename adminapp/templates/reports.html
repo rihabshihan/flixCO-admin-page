@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Reports
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Reports</h1>
+
+        <div class="row">
+            <!-- Revenue Table -->
+            <div class="col-lg-8 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-0">Revenue</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <label for="yearSelect">Select Year:</label>
+                            <select class="form-select" id="yearSelect">
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                            </select>
+                        </div>
+                        <table class="table table-bordered">
+                            <thead class="thead-light text-center">
+                                <tr>
+                                    <th>SL. No</th>
+                                    <th>Months</th>
+                                    <th>Revenue</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>April</td><td>₹ 2,00,000</td></tr>
+                                <tr><td>2</td><td>May</td><td>₹ 1,50,000</td></tr>
+                                <tr><td>3</td><td>June</td><td>₹ 1,75,000</td></tr>
+                                <tr><td>4</td><td>July</td><td>₹ 1,60,000</td></tr>
+                                <tr><td>5</td><td>August</td><td>₹ 2,10,000</td></tr>
+                                <tr><td>6</td><td>September</td><td>₹ 1,90,000</td></tr>
+                                <tr><td>7</td><td>October</td><td>₹ 2,30,000</td></tr>
+                                <tr><td>8</td><td>November</td><td>₹ 1,80,000</td></tr>
+                                <tr><td>9</td><td>December</td><td>₹ 2,50,000</td></tr>
+                                <tr><td>10</td><td>January</td><td>₹ 2,00,000</td></tr>
+                                <tr><td>11</td><td>February</td><td>₹ 1,70,000</td></tr>
+                                <tr><td>12</td><td>March</td><td>₹ 1,85,000</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Tables -->
+            <div class="col-lg-4">
+                <!-- View Counts Table -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4 class="mb-0">View Counts</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead class="thead-light text-center">
+                                <tr>
+                                    <th>SL. No</th>
+                                    <th>Movie Name</th>
+                                    <th>Views</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Movie 1</td><td>4.2M</td></tr>
+                                <tr><td>2</td><td>Movie 2</td><td>2.8M</td></tr>
+                                <tr><td>3</td><td>Movie 3</td><td>1.5M</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Top Movie Ratings Table -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4 class="mb-0">Top Movie Ratings</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead class="thead-light text-center">
+                                <tr>
+                                    <th>SL. No</th>
+                                    <th>Movie Name</th>
+                                    <th>Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Movie 1</td><td>5.0</td></tr>
+                                <tr><td>2</td><td>Movie 2</td><td>4.8</td></tr>
+                                <tr><td>3</td><td>Movie 3</td><td>4.5</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subscription Count Table Centered Below Revenue Table -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-0">Subscription Count</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <label for="subscriptionYearSelect">Select Year:</label>
+                            <select class="form-select" id="subscriptionYearSelect">
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                            </select>
+                        </div>
+                        <table class="table table-bordered">
+                            <thead class="thead-light text-center">
+                                <tr>
+                                    <th>SL. No</th>
+                                    <th>Plan Name</th>
+                                    <th>No of Purchases</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Plan 1</td><td>19,000</td></tr>
+                                <tr><td>2</td><td>Plan 2</td><td>14,000</td></tr>
+                                <tr><td>3</td><td>Plan 3</td><td>7,000</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    User Home Page
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+         <!-- Main Card -->
+    <div class="card shadow">
+        <div class="card-body">
+
+         <!-- Search Bar -->
+        <div class="row mb-4">
+            <div class="col-md-8 mx-auto">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search by email ID..." id="searchInput">
+                    <div class="input-group-append">
+                        <button class="btn btn-dark" onclick="searchUser()">🔍 Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Heading -->
+        <div class="row mb-4">
+            <div class="col text-center">
+                <h2>User List</h2>
+            </div>
+        </div>
+
+        <!-- User Table -->
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead class="thead-light text-center">
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTableBody" class="text-center">
+                            <!-- User rows will be dynamically generated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination Buttons -->
+        <div class="row mt-4">
+            <div class="col-md-4 mx-auto d-flex justify-content-between">
+                <button class="btn btn-outline-secondary" onclick="changePage(-1)">Previous</button>
+                <span id="pageIndicator" class="align-self-center">Page 1</span>
+                <button class="btn btn-outline-secondary" onclick="changePage(1)">Next</button>
+            </div>
+        </div>
+    </div>
+</div> <!-- End of Card Body -->
+</div> <!-- End of Card -->
+
+    <script>
+        const users = [
+            { name: 'user1', email: 'user1@gmail.com' },
+            { name: 'user2', email: 'user2@gmail.com' },
+            // Add more users as needed
+        ];
+
+        let currentPage = 1;
+        const rowsPerPage = 5;
+
+        function displayUsers() {
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const paginatedUsers = users.slice(start, end);
+
+            const userTableBody = document.getElementById('userTableBody');
+            userTableBody.innerHTML = '';
+
+            paginatedUsers.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.name}</td>
+                    <td><a href="mailto:${user.email}">${user.email}</a></td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" onclick="blockUser('${user.name}')">Block</button>
+                        <button class="btn btn-success btn-sm" onclick="unblockUser('${user.name}')">Unblock</button>
+                    </td>
+                `;
+                userTableBody.appendChild(row);
+            });
+
+            document.getElementById('pageIndicator').innerText = `Page ${currentPage}`;
+        }
+
+        function changePage(direction) {
+            const totalPages = Math.ceil(users.length / rowsPerPage);
+            if (direction === -1 && currentPage > 1) {
+                currentPage--;
+            } else if (direction === 1 && currentPage < totalPages) {
+                currentPage++;
+            }
+            displayUsers();
+        }
+
+        function searchUser() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const filteredUsers = users.filter(user => user.email.includes(searchInput));
+
+            const userTableBody = document.getElementById('userTableBody');
+            userTableBody.innerHTML = '';
+
+            if (filteredUsers.length === 0) {
+                userTableBody.innerHTML = '<tr><td colspan="3" class="text-center">No users found.</td></tr>';
+                return;
+            }
+
+            filteredUsers.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.name}</td>
+                    <td><a href="mailto:${user.email}">${user.email}</a></td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" onclick="blockUser('${user.name}')">Block</button>
+                        <button class="btn btn-success btn-sm" onclick="unblockUser('${user.name}')">Unblock</button>
+                    </td>
+                `;
+                userTableBody.appendChild(row);
+            });
+        }
+
+        // Initial display
+        displayUsers();
+    </script>
+{% endblock %}

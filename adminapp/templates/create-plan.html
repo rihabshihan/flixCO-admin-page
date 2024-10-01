@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Create Plan
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <!-- Form Card for Creating a Plan -->
+        <div class="card">
+            <div class="card-header bg-success text-white text-center">
+                <h4>Create Plan</h4>
+            </div>
+            <div class="card-body">
+                <!-- Form to create a new plan -->
+                <form action="{% url 'createplan' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="planName" class="form-label">Plan Name</label>
+                        <input type="text" class="form-control" id="planName" name="plan_name" placeholder="Enter plan name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="planDetails" class="form-label">Plan Details</label>
+                        <textarea class="form-control" id="planDetails" name="plan_details" rows="3" placeholder="Enter plan details" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="planDuration" class="form-label">Duration</label>
+                        <input type="text" class="form-control" id="planDuration" name="plan_duration" placeholder="Enter plan duration (e.g., 12 months)" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="planPrice" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="planPrice" name="plan_price" placeholder="Enter price" required>
+                    </div>
+                    <!-- Create Button -->
+                    <div class="d-flex justify-content-end"> 
+                        <a href="{% url 'homepage' %}" class="btn btn-primary btn-create">Create</a> 
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

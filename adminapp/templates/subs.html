@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Subscription Plans
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Main Card -->
+    <div class="card shadow">
+        <div class="card-body">
+
+            <!-- Search Plan Bar -->
+            <div class="row mb-4">
+                <div class="col-md-8 mx-auto">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for a plan..." id="searchInput">
+                        <button class="btn btn-outline-secondary" type="button" id="searchButton">
+                            <i class="fas fa-search"></i> <!-- Font Awesome search icon -->
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Plan Button (Top Right) -->
+            <div class="row mb-4">
+                <div class="col-md-12 text-end">
+                    <a href="{% url 'createplan' %}" class="btn btn-dark">
+                        <i class="fas fa-plus"></i> Create Plan
+                    </a>
+                </div>
+            </div>
+
+            <!-- Plan Table inside the Card -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-light text-center">
+                                <tr>
+                                    <th>Plan Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <!-- Plan 1 -->
+                                <tr>
+                                    <td>Plan 1</td>
+                                    <td>
+                                        <a href="{% url 'viewplan' %}" class=" btn-sm btn btn-primary">View</a>
+                                        <button class="btn btn-outline-danger btn-sm">Disable</button>
+                                        <button class="btn btn-outline-success btn-sm">Enable</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Plan 2 -->
+                                <tr>
+                                    <td>Plan 2</td>
+                                    <td>
+                                        <a href="{% url 'viewplan' %}" class=" btn-sm btn btn-primary">View</a>
+                                        <button class="btn btn-outline-danger btn-sm">Disable</button>
+                                        <button class="btn btn-outline-success btn-sm">Enable</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Plan 3 -->
+                                <tr>
+                                    <td>Plan 3</td>
+                                    <td>
+                                        <a href="{% url 'viewplan' %}" class=" btn-sm btn btn-primary">View</a>
+                                        <button class="btn btn-outline-danger btn-sm">Disable</button>
+                                        <button class="btn btn-outline-success btn-sm">Enable</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- End of Card Body -->
+    </div> <!-- End of Card -->
+</div>
+
+{% endblock %}
